@@ -56,7 +56,8 @@ func (instance *MangoInstance) Start() {
 		}
 		gl.Clear(gl.COLOR_BUFFER_BIT)
 
-		// scene := win.GetScene()
+		scene := win.GetScene()
+    scene.Render()
 		// renderer.render(scene)
 
 		win.SwapBuffers()

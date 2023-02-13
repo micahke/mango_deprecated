@@ -58,8 +58,10 @@ func NewWindow(width int, height int, title string) *Window {
 }
 
 // attach the scene to the window
-func (window *Window) AttachScene(scene *scene.Scene) {
-  window.scene = scene
+func (window *Window) CreateScene() *scene.Scene {
+  ns := scene.NewScene(float32(window.width), float32(window.height))
+  window.scene = ns
+  return window.scene
 }
 
 
@@ -69,7 +71,13 @@ func (window *Window) GetScene() *scene.Scene {
 }
 
 
+func (window *Window) Width() int {
+  return window.width
+}
 
+func (window *Window) Height() int {
+  return window.height
+}
 
 
 

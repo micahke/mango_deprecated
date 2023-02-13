@@ -1,6 +1,8 @@
 package graphic
 
-import "github.com/micahke/mango/opengl"
+import (
+	"github.com/micahke/mango/opengl"
+)
 
 type Rect2D struct {
 	*Mesh // the eobmbedded Mesh object
@@ -16,10 +18,11 @@ func NewRect2D(x, y, width, height float32) *Rect2D {
 	rect2d := new(Rect2D)
 
   // SUPER: build mesh
-  mesh := new(Mesh)
+  mesh := NewMesh()
   mesh.vao = opengl.NewVertexArray()
   mesh.vbo = opengl.NewVertexBuffer(rect2d.GetVertices())
   mesh.vbl = opengl.NewVertexBufferLayout()
+  mesh.shader = opengl.NewShader("vertex2D.glsl", "fragment2D.glsl")
 
   mesh.vbl.Pushf(3)
   mesh.vao.AddBuffer(*mesh.vbo, *mesh.vbl)
@@ -35,9 +38,6 @@ func NewRect2D(x, y, width, height float32) *Rect2D {
 	return rect2d
 }
 
-func (rect *Rect2D) Render() {
-
-}
 
 // get the vertices for a quad
 func (rect *Rect2D) GetVertices() []float32 {

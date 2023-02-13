@@ -38,7 +38,7 @@ func (shader *Shader) Unbind() {
 }
 
 func (shader *Shader) ParseShader(shaderPath string) string {
-	contents, err := ioutil.ReadFile("res/" + shaderPath)
+	contents, err := ioutil.ReadFile("opengl/shaders/" + shaderPath)
 	if err != nil {
 		panic("There was an error parsing the shader")
 	}
