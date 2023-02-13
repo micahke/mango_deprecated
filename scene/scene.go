@@ -2,7 +2,7 @@ package scene
 
 
 type Scene struct {
-  gameObjects []GameObject
+  gameObjects []*GameObject
 }
 
 
@@ -13,7 +13,7 @@ func NewScene() *Scene {
 }
 
 // Add a game object to the scene
-func (scene *Scene) AddGameObject(gameObject GameObject) {
+func (scene *Scene) AddGameObject(gameObject *GameObject) {
   scene.gameObjects = append(scene.gameObjects, gameObject)
 }
 

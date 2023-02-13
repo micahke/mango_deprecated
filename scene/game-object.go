@@ -1,25 +1,32 @@
 package scene
 
-
-type MComponent interface {
-  Update()
-  Draw()
-}
-
 type GameObject struct {
-  // PUBLIC:
 
+	// PRIVATE:
+	x float32
+	y float32
+	z float32
+}
 
-  // PRIVATE:
-  id int
-  components []MComponent
+func NewGameObject() *GameObject {
+	gameObject := new(GameObject)
+
+	return gameObject
 
 }
 
-func (scene *Scene) NewGameObject() *GameObject {
-  gameObject := new(GameObject) 
-  scene.AddGameObject(*gameObject)
-  return gameObject
+// Get the x posiiton of the game object
+func (gameObject *GameObject) X() float32 {
+  return gameObject.x
+}
+
+// Get the y posiiton of the game object
+func (gameObject *GameObject) Y() float32 {
+  return gameObject.y
 }
 
 
+// Get the z posiiton of the game object
+func (gameObject *GameObject) Z() float32 {
+  return gameObject.z
+}

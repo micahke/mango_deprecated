@@ -12,12 +12,15 @@ func main() {
 
   // Initialize the engine
   mango := core.NewMangoInstance()
-  window := window.NewWindow(800, 600, "Hello, world!")
+  window := window.NewWindow(850, 540, "Hello, world!")
 
 
   mainScene := scene.NewScene()
-  mainScene.NewGameObject()
+  gameObject := scene.NewGameObject()
+  mainScene.AddGameObject(gameObject)
+  window.AttachScene(mainScene)
   
+  mango.SetBackgroundColor(0.5, 0.5, 0.5)
 
   // Attack the window and start the program
   mango.AttachWindow(window)
