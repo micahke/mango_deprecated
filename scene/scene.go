@@ -1,5 +1,6 @@
 package scene
 
+
 type Scene struct {
   gameObjects []*GameObject
   camera *Camera2D
@@ -39,7 +40,7 @@ func (scene *Scene) Render() {
   for i := 0; i < len(scene.gameObjects); i++ {
 
     mesh := scene.gameObjects[i].GetMesh()
-    mesh.Render()
+    mesh.Render(scene.camera.projectionMatrix)
   }
 
 }

@@ -24,7 +24,7 @@ func NewRect2D(x, y, width, height float32) *Rect2D {
   mesh.vbl = opengl.NewVertexBufferLayout()
   mesh.shader = opengl.NewShader("vertex2D.glsl", "fragment2D.glsl")
 
-  mesh.vbl.Pushf(3)
+  mesh.vbl.Pushf(2)
   mesh.vao.AddBuffer(*mesh.vbo, *mesh.vbl)
 
   mesh.ibo = opengl.NewIndexBuffer(rect2d.GetIndeces())
@@ -42,10 +42,10 @@ func NewRect2D(x, y, width, height float32) *Rect2D {
 // get the vertices for a quad
 func (rect *Rect2D) GetVertices() []float32 {
 	vertices := []float32{
-		0.5, 0.5, 0.0,
-		0.5, -0.5, 0.0,
-		-0.5, -0.5, 0.0,
-		-0.5, 0.5, 0.0,
+		100.0, 100.0, 
+		200.0, 100.0, 
+		200.0, 200.0, 
+		100.0, 200.0, 
 	}
   return vertices
 }
@@ -53,8 +53,8 @@ func (rect *Rect2D) GetVertices() []float32 {
 // get the indeces for a quad
 func (rect *Rect2D) GetIndeces() []uint32 {
 	indeces := []uint32{
-    0, 1, 3,
-    1, 2, 3,
+    0, 1, 2,
+    2, 3, 0,
 	}
   return indeces
 }

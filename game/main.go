@@ -13,7 +13,7 @@ func main() {
 
   // Initialize the engine
   mango := core.NewMangoInstance()
-  window := window.NewWindow(850, 540, "Hello, world!")
+  window := window.NewWindow(800, 600, "Hello, world!")
 
 
   mainScene := window.CreateScene()

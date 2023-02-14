@@ -1,6 +1,7 @@
 package graphic
 
 import (
+
 	"github.com/go-gl/gl/v3.3-core/gl"
 	glm "github.com/go-gl/mathgl/mgl32"
 	"github.com/micahke/mango/opengl"
@@ -22,22 +23,21 @@ type i_Mesh interface {
 
 func NewMesh() *Mesh {
   mesh := new(Mesh)
-
   mesh.modelMatrix = glm.Translate3D(0, 0, 0)
 
   return mesh
 }
 
-func (mesh *Mesh) Render(projectionMatrix glm.Mat4, viewMatrix glm.Mat4) {
+func (mesh *Mesh) Render(projectionMatrix glm.Mat4) {
 	if mesh.ibo != nil {
 		mesh.ibo.Bind()
 	}
-	mesh.shader.Bind()
 	mesh.vao.Bind()
 
+
+	mesh.shader.Bind()
   mesh.shader.SetUniformMat4f("model", mesh.modelMatrix)
-  mesh.shader.SetUniformMat4f("view", viewMatrix)
-  mesh.shader.SetUniformMat4f("proj", projectionMatrix)
+  mesh.shader.SetUniformMat4f("projection", projectionMatrix)
 
 
 	if mesh.ibo != nil {
