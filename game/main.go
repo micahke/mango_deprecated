@@ -18,10 +18,14 @@ func main() {
 
   mainScene := window.CreateScene()
 
-  rect := graphic.NewRect2D(0, 0, 100, 100)
+  rect := graphic.NewRect2D(100, 100, 100, 100)
   gameObject := scene.NewGameObjectM(rect.Mesh)
 
+  rect2 := graphic.NewRect2D(400, 400, 50, 50)
+  gameObject2 := scene.NewGameObjectM(rect2.Mesh)
+
   mainScene.AddGameObject(gameObject)
+  mainScene.AddGameObject(gameObject2)
   mainScene.InitCamera()
   
   mango.SetBackgroundColor(0.5, 0.5, 0.5)
